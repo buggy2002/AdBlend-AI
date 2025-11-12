@@ -53,7 +53,7 @@ const generateBlendedImageFlow = ai.defineFlow(
   },
   async input => {
     const {modelImage, productImage} = input;
-    const {media, content} = await ai.generate({
+    const {media} = await ai.generate({
       model: 'googleai/gemini-2.5-flash-image-preview',
       prompt: [
         {text: generateBlendedImagePromptText},
@@ -61,7 +61,7 @@ const generateBlendedImageFlow = ai.defineFlow(
         {media: {url: productImage}},
       ],
       config: {
-        responseModalities: ['TEXT', 'IMAGE'],
+        responseModalities: ['IMAGE'],
       },
     });
 
