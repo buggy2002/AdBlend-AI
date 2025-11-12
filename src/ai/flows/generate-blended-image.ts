@@ -61,7 +61,7 @@ const generateBlendedImageFlow = ai.defineFlow(
         {media: {url: productImage}},
       ],
       config: {
-        responseModalities: ['IMAGE'],
+        responseModalities: ['TEXT', 'IMAGE'],
       },
     });
 
