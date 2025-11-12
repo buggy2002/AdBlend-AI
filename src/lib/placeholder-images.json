@@ -1,3 +1,16 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "model-placeholder",
+      "description": "Placeholder image for model upload",
+      "imageUrl": "https://images.unsplash.com/photo-1527736947477-2790e28f3443?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b21hbiUyMGZhc2hpb258ZW58MHx8fHwxNzYyODk1NjgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman fashion"
+    },
+    {
+      "id": "product-placeholder",
+      "description": "Placeholder image for product upload",
+      "imageUrl": "https://images.unsplash.com/photo-1575295912464-fcfd1186d11d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxoYW5kYmFnJTIwYWNjZXNzb3J5fGVufDB8fHx8MTc2MjkzOTYxOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "handbag accessory"
+    }
+  ]
 }
