@@ -43,8 +43,6 @@ export async function generateBlendedImage(
   return generateBlendedImageFlow(input);
 }
 
-const generateBlendedImagePromptText = `A {{style}} photograph of a fashionable model {{action}} the {{productName}}. The scene is a {{background}}. Professional studio lighting, high quality, photorealistic, commercial advertisement look. Use the first image as the model's appearance and the second image as the product.`;
-
 const generateBlendedImageFlow = ai.defineFlow(
   {
     name: 'generateBlendedImageFlow',
@@ -52,21 +50,25 @@ const generateBlendedImageFlow = ai.defineFlow(
     outputSchema: GenerateBlendedImageOutputSchema,
   },
   async input => {
-    const {modelImage, productImage} = input;
+    const {modelImage, productImage, style, action, productName, background} = input;
+    
+    // Dynamically create the prompt text with the input values
+    const promptText = `A ${style} photograph of a fashionable model ${action} the ${productName}. The scene is a ${background}. Professional studio lighting, high quality, photorealistic, commercial advertisement look. Use the first image as the model's appearance and the second image as the product.`;
+
     const {media} = await ai.generate({
       model: 'googleai/gemini-2.5-flash-image-preview',
       prompt: [
-        {text: generateBlendedImagePromptText},
+        {text: promptText},
         {media: {url: modelImage}},
         {media: {url: productImage}},
       ],
       config: {
-        responseModalities: ['IMAGE'],
+        responseModalities: ['TEXT', 'IMAGE'],
       },
     });
 
     if (!media?.url) {
-      throw new Error('Image generation failed. Please try again.');
+      throw new Error('Image generation failed. The model did not return an image. Please try again.');
     }
 
     return {generatedImage: media.url};
